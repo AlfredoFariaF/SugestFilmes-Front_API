@@ -1,0 +1,17 @@
+<header class="topbar">
+    <div class="container topbar-content">
+        <a class="logo" href="${pageContext.request.contextPath}/home">SugestFilmes</a>
+        <nav class="nav">
+            <a class="${activePage == 'home' ? 'active' : ''}" href="${pageContext.request.contextPath}/home">Início</a>
+            <a class="${activePage == 'filmes' ? 'active' : ''}" href="${pageContext.request.contextPath}/filmes">Filmes</a>
+            <a class="${activePage == 'categorias' ? 'active' : ''}" href="${pageContext.request.contextPath}/categorias">Categorias</a>
+            <a class="${activePage == 'recomendacoes' ? 'active' : ''}" href="${pageContext.request.contextPath}/recomendacoes">Recomendações</a>
+            <a class="${activePage == 'avaliacoes' ? 'active' : ''}" href="${pageContext.request.contextPath}/avaliacoes">Minhas avaliações</a>
+            <c:if test="${ehAdmin}">
+                <a href="${pageContext.request.contextPath}/usuarios">Usuários</a>
+                <a href="${pageContext.request.contextPath}/perfis">Perfis</a>
+            </c:if>
+        </nav>
+        <div class="user-nav"><span>${sessionScope.usuarioLogado.nome}</span><a href="${pageContext.request.contextPath}/logout">Sair</a></div>
+    </div>
+</header>

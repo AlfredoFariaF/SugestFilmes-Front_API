@@ -1,0 +1,13 @@
+services:
+  front:
+    build: .
+    container_name: sugestfilmes-front-jsp
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      # API publicada no host na porta 8081 pelo docker-compose da SugestFilmes-API.
+      API_BASE_URL: "http://host.docker.internal:8081/api"
+      JAVA_TOOL_OPTIONS: "-Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
