@@ -21,12 +21,36 @@ public final class ApiClient {
 
     private ApiClient() {
         this.http = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(5))
+                .connectTimeout(Duration.ofSeconds(3))
                 .version(HttpClient.Version.HTTP_1_1)
                 .build();
     }
 
     public static ApiClient getInstance() { return INSTANCE; }
+
+    /**
+     * Verifica se a API está respondendo. O endpoint /health é público e não exige JWT.
+     * Usado pelo SecurityFilter antes de liberar páginas autenticadas.
+     */
+    public boolean isAvailable() {
+        try {
+            HttpRequest request = HttpRequest.newBuilder(
+                            URI.create(ApiConfig.baseUrl() + "/health"))
+                    .timeout(Duration.ofSeconds(4))
+                    .header("Accept", "application/json")
+                    .GET()
+                    .build();
+
+            HttpResponse<Void> response = http.send(
+                    request, HttpResponse.BodyHandlers.discarding());
+            return response.statusCode() == 200;
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return false;
+        } catch (IOException | IllegalArgumentException e) {
+            return false;
+        }
+    }
 
     public JsonElement get(String path, String token) { return send("GET", path, token, null); }
     public JsonElement post(String path, String token, Object body) { return send("POST", path, token, body); }

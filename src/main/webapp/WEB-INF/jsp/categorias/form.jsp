@@ -1,5 +1,59 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %><%@ taglib prefix="c" uri="jakarta.tags.core" %><%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Categoria - SugestFilmes</title><link rel="stylesheet" href="${pageContext.request.contextPath}/css/estilo.css"></head><body>
-<c:set var="activePage" value="categorias"/><%@ include file="/WEB-INF/jsp/fragments/header.jspf" %>
-<main class="container page-space"><div class="page-header"><h1><c:choose><c:when test="${empty categoria.id}">Nova categoria</c:when><c:otherwise>Editar categoria</c:otherwise></c:choose></h1></div><div class="card"><c:if test="${not empty erro}"><div class="alert alert-erro"><c:out value="${erro}"/></div></c:if>
-<form method="post" action="${pageContext.request.contextPath}/categorias"><input type="hidden" name="_csrf" value="${sessionScope.csrfToken}"><input type="hidden" name="id" value="${categoria.id}"><div class="form-group"><label for="nome">Nome</label><input type="text" id="nome" name="nome" value="${fn:escapeXml(categoria.nome)}" maxlength="80" required></div><div class="actions"><button class="btn" type="submit">Salvar</button><a class="btn btn-secondary" href="${pageContext.request.contextPath}/categorias">Cancelar</a></div></form></div></main></body></html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+        <%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+            <!DOCTYPE html>
+            <html lang="pt-BR">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Categoria - SugestFilmes</title>
+                <link rel="stylesheet" href="${pageContext.request.contextPath}/css/estilo.css">
+            </head>
+
+            <body>
+                <c:set var="activePage" value="categorias" />
+                <header class="topbar">
+                    <div class="container topbar-content">
+                        <a class="logo" href="${pageContext.request.contextPath}/home"> SugestFilmes</a>
+                        <nav class="nav">
+                            <a class="active" href="${pageContext.request.contextPath}/home">Início</a>
+                            <a href="${pageContext.request.contextPath}/filmes">Filmes</a>
+                            <a href="${pageContext.request.contextPath}/categorias">Categorias</a>
+                            <a href="${pageContext.request.contextPath}/recomendacoes">Recomendações</a>
+                            <a href="${pageContext.request.contextPath}/avaliacoes?minhas=true">Minhas avaliações</a>
+                        </nav>
+                        <div class="user-nav"><span>${usuarioLogado.nome}</span><a
+                                href="${pageContext.request.contextPath}/logout">Sair</a></div>
+                    </div>
+                </header>
+                <main class="container page-space">
+                    <div class="page-header">
+                        <h1>
+                            <c:choose>
+                                <c:when test="${empty categoria.id}">Nova categoria</c:when>
+                                <c:otherwise>Editar categoria</c:otherwise>
+                            </c:choose>
+                        </h1>
+                    </div>
+                    <div class="card">
+                        <c:if test="${not empty erro}">
+                            <div class="alert alert-erro">
+                                <c:out value="${erro}" />
+                            </div>
+                        </c:if>
+                        <form method="post" action="${pageContext.request.contextPath}/categorias"><input type="hidden"
+                                name="_csrf" value="${sessionScope.csrfToken}"><input type="hidden" name="id"
+                                value="${categoria.id}">
+                            <div class="form-group"><label for="nome">Nome</label><input type="text" id="nome"
+                                    name="nome" value="${fn:escapeXml(categoria.nome)}" maxlength="80" required>
+                            </div>
+                            <div class="actions"><button class="btn" type="submit">Salvar</button><a
+                                    class="btn btn-secondary"
+                                    href="${pageContext.request.contextPath}/categorias">Cancelar</a></div>
+                        </form>
+                    </div>
+                </main>
+            </body>
+
+            </html>
