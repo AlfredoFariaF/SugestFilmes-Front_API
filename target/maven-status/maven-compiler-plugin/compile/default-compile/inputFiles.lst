@@ -1,26 +1,33 @@
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\api\ApiClient.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\api\ApiException.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\config\ApiConfig.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\controller\AvaliacaoServlet.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\controller\BaseServlet.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\controller\CategoriaServlet.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\controller\FilmeServlet.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\controller\HomeServlet.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\controller\LoginServlet.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\controller\LogoutServlet.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\controller\PerfilServlet.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\controller\RecomendacaoServlet.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\controller\UsuarioServlet.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\filter\SecurityFilter.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\model\Avaliacao.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\model\Categoria.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\model\Filme.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\model\Perfil.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\model\Usuario.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\service\AuthService.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\service\AvaliacaoService.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\service\CategoriaService.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\service\FilmeService.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\service\PerfilService.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\service\RecomendacaoService.java
-d:\alfre\Documents\Plataforma de sugestao de filmes\SugestFilmes\src\main\java\br\com\sugestfilmes\service\UsuarioService.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\api\ApiClient.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\api\ApiException.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\config\ApiConfig.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\controller\AvaliacaoServlet.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\controller\BaseServlet.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\controller\CategoriaServlet.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\controller\FilmeServlet.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\controller\HomeServlet.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\controller\LoginServlet.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\controller\LogoutServlet.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\controller\PerfilServlet.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\controller\RecomendacaoServlet.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\controller\UsuarioServlet.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\dao\AuthDAO.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\dao\AvaliacaoDAO.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\dao\CategoriaDAO.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\dao\FilmeDAO.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\dao\PerfilDAO.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\dao\RecomendacaoDAO.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\dao\UsuarioDAO.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\filter\SecurityFilter.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\model\Avaliacao.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\model\Categoria.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\model\Filme.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\model\Perfil.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\model\Usuario.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\service\AuthService.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\service\AvaliacaoService.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\service\CategoriaService.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\service\FilmeService.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\service\PerfilService.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\service\RecomendacaoService.java
+D:\Coding\Tec pra Internet\SugestFIlmes\SDP FILMES FRONT END\src\main\java\br\com\sugestfilmes\service\UsuarioService.java

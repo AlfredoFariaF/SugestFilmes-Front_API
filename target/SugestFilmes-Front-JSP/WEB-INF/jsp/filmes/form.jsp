@@ -68,7 +68,7 @@
                                 <div class="category-grid form-category-grid">
                                     <c:forEach var="categoria" items="${categorias}"><label
                                             class="category-option"><input type="checkbox" name="categoria"
-                                                value="${categoria.id}" <c:if
+                                                value="${categoria.id}"
                                                 test="${categoriasSelecionadas.contains(categoria.id)}">checked
                                             </c:if>><span>
                                                 <c:out value="${categoria.nome}" />
