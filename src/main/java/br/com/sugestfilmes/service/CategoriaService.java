@@ -1,18 +1,36 @@
 package br.com.sugestfilmes.service;
 
-import br.com.sugestfilmes.api.ApiClient;
+import br.com.sugestfilmes.dao.CategoriaDAO;
 import br.com.sugestfilmes.model.Categoria;
 import com.google.gson.JsonObject;
+
 import java.util.List;
 
 public class CategoriaService {
-    private final ApiClient api = ApiClient.getInstance();
-    public List<Categoria> listar(String token) { return api.getList("/categorias", token, Categoria.class); }
-    public Categoria buscar(Long id, String token) { return api.getObject("/categorias/" + id, token, Categoria.class); }
-    public void salvar(Categoria categoria, String token) {
-        JsonObject body = new JsonObject(); body.addProperty("nome", categoria.getNome());
-        if (categoria.getId() == null) api.post("/categorias", token, body);
-        else api.put("/categorias/" + categoria.getId(), token, body);
+
+    private final CategoriaDAO dao = new CategoriaDAO();
+
+    public List<Categoria> listar(String token) {
+        return dao.listar(token);
     }
-    public void excluir(Long id, String token) { api.delete("/categorias/" + id, token); }
+
+    public Categoria buscar(Long id, String token) {
+        return dao.buscar(id, token);
+    }
+
+    public void salvar(Categoria categoria, String token) {
+
+        JsonObject body = new JsonObject();
+        body.addProperty("nome", categoria.getNome());
+
+        if (categoria.getId() == null) {
+            dao.cadastrar(body, token);
+        } else {
+            dao.atualizar(categoria.getId(), body, token);
+        }
+    }
+
+    public void excluir(Long id, String token) {
+        dao.excluir(id, token);
+    }
 }
