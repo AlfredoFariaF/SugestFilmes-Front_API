@@ -23,6 +23,10 @@
                         <a href="${pageContext.request.contextPath}/categorias">Categorias</a>
                         <a href="${pageContext.request.contextPath}/recomendacoes">Recomendações</a>
                         <a href="${pageContext.request.contextPath}/avaliacoes?minhas=true">Minhas avaliações</a>
+                        <c:if test="${ehAdmin}">
+                            <a href="${pageContext.request.contextPath}/usuarios">Usuários</a>
+                            <a href="${pageContext.request.contextPath}/perfis">Perfis</a>
+                        </c:if>
                     </nav>
                     <div class="user-nav"><span>${usuarioLogado.nome}</span><a
                             href="${pageContext.request.contextPath}/logout">Sair</a></div>
