@@ -16,10 +16,10 @@
                 <div class="container topbar-content">
                     <a class="logo" href="${pageContext.request.contextPath}/home"> SugestFilmes</a>
                     <nav class="nav">
-                        <a class="active" href="${pageContext.request.contextPath}/home">Início</a>
+                        <a href="${pageContext.request.contextPath}/home">Início</a>
                         <a href="${pageContext.request.contextPath}/filmes">Filmes</a>
                         <a href="${pageContext.request.contextPath}/categorias">Categorias</a>
-                        <a href="${pageContext.request.contextPath}/recomendacoes">Recomendações</a>
+                        <a class="active" href="${pageContext.request.contextPath}/recomendacoes">Recomendações</a>
                         <a href="${pageContext.request.contextPath}/avaliacoes?minhas=true">Minhas avaliações</a>
                     </nav>
                     <div class="user-nav"><span>${usuarioLogado.nome}</span><a
