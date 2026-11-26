@@ -16,8 +16,12 @@ public class LoginServlet extends BaseServlet {
     private final Gson gson = new Gson();
     private static final String VIEW = "/WEB-INF/jsp/login.jsp";
 
-    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (token(req) != null) { redirect(req, resp, "/home"); return; }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (token(req) != null) {
+            redirect(req, resp, "/home");
+            return;
+        }
         HttpSession session = req.getSession(false);
         if (session != null && session.getAttribute("flashErro") != null) {
             req.setAttribute("erro", session.getAttribute("flashErro"));
@@ -26,7 +30,8 @@ public class LoginServlet extends BaseServlet {
         forward(req, resp, VIEW);
     }
 
-    @Override protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             JsonObject result = authService.login(param(req, "login"), req.getParameter("senha"));
             String jwt = result.get("token").getAsString();

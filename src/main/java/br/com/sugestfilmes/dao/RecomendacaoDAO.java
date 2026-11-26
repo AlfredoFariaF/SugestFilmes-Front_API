@@ -14,7 +14,6 @@ public class RecomendacaoDAO {
         return api.getList(
                 "/recomendacoes?categorias=" + categorias,
                 token,
-                Filme.class
-        );
+                Filme.class);
     }
 }

@@ -20,8 +20,7 @@ public class UsuarioDAO {
         return api.getObject(
                 "/usuarios/" + id,
                 token,
-                Usuario.class
-        );
+                Usuario.class);
     }
 
     public void cadastrar(JsonObject body, String token) {

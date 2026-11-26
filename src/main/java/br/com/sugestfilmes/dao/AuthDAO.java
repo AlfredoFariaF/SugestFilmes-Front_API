@@ -14,7 +14,6 @@ public class AuthDAO {
         return api.post(
                 "/auth/login",
                 null,
-                payload
-        ).getAsJsonObject();
+                payload).getAsJsonObject();
     }
 }

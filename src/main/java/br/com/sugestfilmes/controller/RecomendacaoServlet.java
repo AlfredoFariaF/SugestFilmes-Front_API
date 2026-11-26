@@ -14,13 +14,17 @@ public class RecomendacaoServlet extends BaseServlet {
     private final CategoriaService categorias = new CategoriaService();
     private final RecomendacaoService recomendacoes = new RecomendacaoService();
 
-    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             List<Long> selected = longList(req.getParameterValues("categoria"));
             req.setAttribute("categorias", categorias.listar(token(req)));
             req.setAttribute("selecionadas", selected);
             req.setAttribute("filmes", selected.isEmpty() ? List.of() : recomendacoes.recomendar(selected, token(req)));
-        } catch (ApiException e) { if (apiError(req, resp, e)) return; }
+        } catch (ApiException e) {
+            if (apiError(req, resp, e))
+                return;
+        }
         forward(req, resp, "/WEB-INF/jsp/recomendacoes/lista.jsp");
     }
 }

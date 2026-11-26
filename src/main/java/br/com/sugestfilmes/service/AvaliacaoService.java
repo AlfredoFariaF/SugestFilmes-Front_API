@@ -23,8 +23,7 @@ public class AvaliacaoService {
 
         String query = "?filmeId=" + URLEncoder.encode(
                 String.valueOf(filmeId),
-                StandardCharsets.UTF_8
-        );
+                StandardCharsets.UTF_8);
 
         return dao.porFilme(query, token);
     }

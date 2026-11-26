@@ -15,13 +15,11 @@ public class AuthService {
 
         payload.addProperty(
                 "login",
-                login == null ? "" : login.trim()
-        );
+                login == null ? "" : login.trim());
 
         payload.addProperty(
                 "senha",
-                senha == null ? "" : senha
-        );
+                senha == null ? "" : senha);
 
         return dao.login(payload);
     }

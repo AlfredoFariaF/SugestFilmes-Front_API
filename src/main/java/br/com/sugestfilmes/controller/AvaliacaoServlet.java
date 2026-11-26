@@ -19,13 +19,17 @@ public class AvaliacaoServlet extends BaseServlet {
     private static final String LISTA = "/WEB-INF/jsp/avaliacoes/lista.jsp";
     private static final String FORM = "/WEB-INF/jsp/avaliacoes/form.jsp";
 
-    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             if ("editar".equals(acao(req))) {
                 Long id = longParam(req, "id");
                 Avaliacao avaliacao = service.minhas(token(req)).stream()
                         .filter(a -> id != null && id.equals(a.getId())).findFirst().orElse(null);
-                if (avaliacao == null) { resp.sendError(404, "Avaliação não encontrada."); return; }
+                if (avaliacao == null) {
+                    resp.sendError(404, "Avaliação não encontrada.");
+                    return;
+                }
                 Filme filme = filmes.buscar(avaliacao.getFilmeId(), token(req));
                 req.setAttribute("avaliacao", avaliacao);
                 req.setAttribute("filme", filme);
@@ -37,14 +41,19 @@ public class AvaliacaoServlet extends BaseServlet {
                 return;
             }
             Long filmeId = longParam(req, "filmeId");
-            List<Avaliacao> lista = filmeId == null ? service.minhas(token(req)) : service.porFilme(filmeId, token(req));
+            List<Avaliacao> lista = filmeId == null ? service.minhas(token(req))
+                    : service.porFilme(filmeId, token(req));
             req.setAttribute("avaliacoes", lista);
             req.setAttribute("filmeId", filmeId);
-        } catch (ApiException e) { if (apiError(req, resp, e)) return; }
+        } catch (ApiException e) {
+            if (apiError(req, resp, e))
+                return;
+        }
         forward(req, resp, LISTA);
     }
 
-    @Override protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = acao(req);
         Long id = longParam(req, "id");
         Long filmeId = longParam(req, "filmeId");
@@ -59,10 +68,13 @@ public class AvaliacaoServlet extends BaseServlet {
                 service.salvar(filmeId, nota == null ? 0 : nota, param(req, "comentario"), token(req));
             }
 
-            if (filmeId != null) redirect(req, resp, "/avaliacoes?filmeId=" + filmeId);
-            else redirect(req, resp, "/avaliacoes");
+            if (filmeId != null)
+                redirect(req, resp, "/avaliacoes?filmeId=" + filmeId);
+            else
+                redirect(req, resp, "/avaliacoes");
         } catch (ApiException e) {
-            if (apiError(req, resp, e)) return;
+            if (apiError(req, resp, e))
+                return;
             if ("atualizar".equals(action)) {
                 req.setAttribute("erro", e.getMessage());
                 Avaliacao atual = new Avaliacao();
@@ -71,8 +83,10 @@ public class AvaliacaoServlet extends BaseServlet {
                 atual.setNota(intParam(req, "nota") == null ? 0 : intParam(req, "nota"));
                 atual.setComentario(param(req, "comentario"));
                 req.setAttribute("avaliacao", atual);
-                try { req.setAttribute("filme", filmeId == null ? null : filmes.buscar(filmeId, token(req))); }
-                catch (ApiException ignored) { }
+                try {
+                    req.setAttribute("filme", filmeId == null ? null : filmes.buscar(filmeId, token(req)));
+                } catch (ApiException ignored) {
+                }
                 forward(req, resp, FORM);
             } else if ("excluir".equals(action)) {
                 req.setAttribute("erro", e.getMessage());

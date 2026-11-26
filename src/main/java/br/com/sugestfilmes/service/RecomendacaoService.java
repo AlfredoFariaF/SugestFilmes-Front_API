@@ -22,4 +22,3 @@ public class RecomendacaoService {
         return dao.recomendar(ids, token);
     }
 }
-    

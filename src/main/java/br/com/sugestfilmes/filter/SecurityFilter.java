@@ -10,7 +10,10 @@ import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.Set;
 
-/** Protege páginas autenticadas e formulários contra CSRF. O JWT fica no servidor, na sessão. */
+/**
+ * Protege páginas autenticadas e formulários contra CSRF. O JWT fica no
+ * servidor, na sessão.
+ */
 @WebFilter("/*")
 public class SecurityFilter implements Filter {
     private static final SecureRandom RANDOM = new SecureRandom();
@@ -92,7 +95,8 @@ public class SecurityFilter implements Filter {
     }
 
     private boolean constantTimeEquals(String a, String b) {
-        if (a == null || b == null) return false;
+        if (a == null || b == null)
+            return false;
         return java.security.MessageDigest.isEqual(a.getBytes(java.nio.charset.StandardCharsets.UTF_8),
                 b.getBytes(java.nio.charset.StandardCharsets.UTF_8));
     }

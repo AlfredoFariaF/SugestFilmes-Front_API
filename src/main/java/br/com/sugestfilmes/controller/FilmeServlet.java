@@ -18,15 +18,25 @@ public class FilmeServlet extends BaseServlet {
     private final CategoriaService categorias = new CategoriaService();
     private final AvaliacaoService avaliacoes = new AvaliacaoService();
 
-    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             switch (acao(req)) {
-                case "novo" -> { if (!requireAdmin(req, resp)) return; mostrarFormulario(req, resp, new Filme(), List.of()); }
+                case "novo" -> {
+                    if (!requireAdmin(req, resp))
+                        return;
+                    mostrarFormulario(req, resp, new Filme(), List.of());
+                }
                 case "editar" -> {
-                    if (!requireAdmin(req, resp)) return;
+                    if (!requireAdmin(req, resp))
+                        return;
                     Filme filme = filmes.buscar(longParam(req, "id"), token(req));
-                    if (filme == null) { resp.sendError(404, "Filme não encontrado."); return; }
-                    List<Long> selected = filme.getCategorias() == null ? List.of() : filme.getCategorias().stream().map(Categoria::getId).toList();
+                    if (filme == null) {
+                        resp.sendError(404, "Filme não encontrado.");
+                        return;
+                    }
+                    List<Long> selected = filme.getCategorias() == null ? List.of()
+                            : filme.getCategorias().stream().map(Categoria::getId).toList();
                     mostrarFormulario(req, resp, filme, selected);
                 }
                 case "detalhes" -> detalhes(req, resp);
@@ -38,7 +48,8 @@ public class FilmeServlet extends BaseServlet {
                 }
             }
         } catch (ApiException e) {
-            if (apiError(req, resp, e)) return;
+            if (apiError(req, resp, e))
+                return;
             forward(req, resp, LISTA);
         }
     }
@@ -46,9 +57,13 @@ public class FilmeServlet extends BaseServlet {
     private void detalhes(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long id = longParam(req, "id");
         Filme filme = filmes.buscar(id, token(req));
-        if (filme == null) { resp.sendError(404, "Filme não encontrado."); return; }
+        if (filme == null) {
+            resp.sendError(404, "Filme não encontrado.");
+            return;
+        }
         List<Avaliacao> reviews = avaliacoes.porFilme(id, token(req));
-        Avaliacao minha = reviews.stream().filter(a -> Objects.equals(a.getUsuarioId(), usuario(req).getId())).findFirst().orElse(null);
+        Avaliacao minha = reviews.stream().filter(a -> Objects.equals(a.getUsuarioId(), usuario(req).getId()))
+                .findFirst().orElse(null);
         req.setAttribute("filme", filme);
         HttpSession session = req.getSession(false);
         if (session != null && session.getAttribute("flashErro") != null) {
@@ -60,8 +75,10 @@ public class FilmeServlet extends BaseServlet {
         forward(req, resp, DETALHES);
     }
 
-    @Override protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (!requireAdmin(req, resp)) return;
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (!requireAdmin(req, resp))
+            return;
         String action = acao(req);
         try {
             if ("excluir".equals(action)) {
@@ -80,18 +97,27 @@ public class FilmeServlet extends BaseServlet {
             filmes.salvar(filme, ids, token(req));
             redirect(req, resp, "/filmes");
         } catch (ApiException e) {
-            if (apiError(req, resp, e)) return;
+            if (apiError(req, resp, e))
+                return;
             Filme filme = fromRequest(req);
             List<Long> ids = longList(req.getParameterValues("categoria"));
-            try { mostrarFormulario(req, resp, filme, ids); }
-            catch (ApiException ignored) { forward(req, resp, FORM); }
+            try {
+                mostrarFormulario(req, resp, filme, ids);
+            } catch (ApiException ignored) {
+                forward(req, resp, FORM);
+            }
         }
     }
 
     private Filme fromRequest(HttpServletRequest req) {
-        Filme f = new Filme(); f.setId(longParam(req, "id")); f.setTitulo(param(req, "titulo"));
-        f.setDescricao(param(req, "descricao")); f.setGenero(param(req, "genero")); f.setAno(intParam(req, "ano"));
-        f.setDiretor(param(req, "diretor")); return f;
+        Filme f = new Filme();
+        f.setId(longParam(req, "id"));
+        f.setTitulo(param(req, "titulo"));
+        f.setDescricao(param(req, "descricao"));
+        f.setGenero(param(req, "genero"));
+        f.setAno(intParam(req, "ano"));
+        f.setDiretor(param(req, "diretor"));
+        return f;
     }
 
     private void mostrarFormulario(HttpServletRequest req, HttpServletResponse resp, Filme filme, List<Long> selected)

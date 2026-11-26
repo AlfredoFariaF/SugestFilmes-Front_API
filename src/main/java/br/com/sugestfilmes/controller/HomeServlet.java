@@ -15,12 +15,16 @@ public class HomeServlet extends BaseServlet {
     private final CategoriaService categorias = new CategoriaService();
     private final FilmeService filmes = new FilmeService();
 
-    @Override protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
             req.setAttribute("categorias", categorias.listar(token(req)));
             List<Filme> all = filmes.listar(null, token(req));
             req.setAttribute("filmes", all.subList(0, Math.min(4, all.size())));
-        } catch (ApiException e) { if (apiError(req, resp, e)) return; }
+        } catch (ApiException e) {
+            if (apiError(req, resp, e))
+                return;
+        }
         forward(req, resp, "/WEB-INF/jsp/home.jsp");
     }
 }

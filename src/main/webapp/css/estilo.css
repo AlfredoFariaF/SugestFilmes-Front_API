@@ -714,20 +714,20 @@ tr:last-child td {
 
 /* Ações administrativas em tabelas */
 .link-button {
-  border: 0;
-  padding: 0;
-  background: transparent;
-  color: #c4b5fd;
-  font: inherit;
-  cursor: pointer;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: #c4b5fd;
+    font: inherit;
+    cursor: pointer;
 }
 
 .link-button:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .danger-link {
-  color: #ff8b82;
+    color: #ff8b82;
 }
 
 .text-muted {
